@@ -3,8 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:padding="10dip"
-    android:background="@color/bg_login">
+    android:padding="10dip" >
 
     <TextView
         android:id="@+id/txtusername"
@@ -17,7 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtusername"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/txtpassword"
@@ -38,14 +37,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
-        android:text="@string/LoginBtn"
-        android:onClick="signInHandler"/>
+        android:text="@string/LoginBtn" />
 
     <Button
         android:id="@+id/signup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login"
-        android:text="@string/SignupBtn"
-        android:onClick="signUpHandler"/>
+        android:text="@string/SignupBtn" />
  </RelativeLayout>
