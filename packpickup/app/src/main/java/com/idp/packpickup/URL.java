@@ -5,6 +5,6 @@ package com.idp.packpickup;
  */
 public class URL {
     public final static String host = "http://192.168.15.1/";
-    public final static String loginScript = host+"login_user.php";
-
+    //public final static String loginScript = host+"login_user.php";
+    public final static String loginScript = "http://packpickup.host22.com/login_user.php";
 }
