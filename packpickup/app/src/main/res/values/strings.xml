@@ -2,8 +2,10 @@
 <resources>
 
     <string name="hello">Hello World, ParseStarterProjectActivity!</string>
-    <string name="app_name">Parse.com Login Tutorial</string>
+    <string name="App_name">PackPickUp</string>
     <string name="Username">Username</string>
+    <string name="Email">Email</string>
+    <string name="Location">Location</string>
     <string name="Password">Password</string>
     <string name="LoginBtn">Login</string>
     <string name="SignupBtn">Sign Up</string>

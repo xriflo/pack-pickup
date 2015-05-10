@@ -3,7 +3,6 @@ package com.idp.packpickup;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,25 +10,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
+import java.io.OutputStreamWriter;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 
 public class MainActivity extends Activity {
@@ -48,24 +40,31 @@ public class MainActivity extends Activity {
         // This is run in a background thread
         @Override
         protected String doInBackground(JSONObject... params) {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(URL.loginScript);
-            httpPost.addHeader("Content-Type", "application/xml");
-            Log.v("debuv","ici1");
+            StringBuffer responseString = new StringBuffer();
+            String data  = "";
+
             try {
-                HttpResponse response = httpClient.execute(httpPost);
+                data += URLEncoder.encode("username", "UTF-8")
+                        + "=" + URLEncoder.encode(params[0].getString("username"), "UTF-8");
+                data += "&" + URLEncoder.encode("password", "UTF-8")
+                        + "=" + URLEncoder.encode(params[0].getString("password"), "UTF-8");
+                data += "&" + URLEncoder.encode("logging", "UTF-8")
+                        + "=" + URLEncoder.encode(params[0].getString("logging"), "UTF-8");
+                java.net.URL url = new java.net.URL(URL.createRowScript);
+                URLConnection conn = url.openConnection();
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter
+                        (conn.getOutputStream());
+                wr.write( data );
+                wr.flush();
+
                 BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(response.getEntity()
-                                .getContent(), "UTF-8"));
-                StringBuffer responseString = new StringBuffer("");
+                        new InputStreamReader(conn.getInputStream()));
+                responseString = new StringBuffer("");
                 String line;
                 while ((line = reader.readLine()) != null) {
                     responseString.append(line);
                 }
-                System.out.println("respose QQQQQQQQQQQ");
-                System.out.println("11response "
-                        + responseString.toString());
-                Log.v("debuv",responseString.toString());
 
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
@@ -73,28 +72,28 @@ public class MainActivity extends Activity {
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            Log.v("debuv","ici2");
-
-            return "bla";
+            Log.v("debuv", responseString.toString());
+            return responseString.toString();
         }
 
         // This is called from background thread but runs in UI
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
-
         }
 
         // This runs in UI when background thread finishes
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
-    public void signInHandler(View view)
-    {
+    public void signInHandler(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, SignInActivity.class);
         Button buttonText = (Button) findViewById(R.id.login);
@@ -107,6 +106,7 @@ public class MainActivity extends Activity {
         try {
             login.put("username",username);
             login.put("password",password);
+            login.put("logging", "signin");
             new MyConnection().execute(login);
         } catch (JSONException e) {
             e.printStackTrace();
