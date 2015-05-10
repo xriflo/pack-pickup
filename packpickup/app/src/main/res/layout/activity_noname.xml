@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dip"
+    android:background="@color/bg_login"
+    android:weightSum="1">
+
+    <Button
+        android:text="@string/WantToSend"
+        android:id="@+id/send_pack"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <Button
+        android:text="@string/CanPickUp"
+        android:id="@+id/pick_up_pack"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal" />
+
+</LinearLayout>

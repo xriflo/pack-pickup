@@ -11,6 +11,8 @@
     <string name="SignupBtn">Sign Up</string>
     <string name="LogoutBtn">Log Out</string>
     <string name="Welcome">Welcome!</string>
+    <string name="WantToSend">Want to send</string>
+    <string name="CanPickUp">Can pick up</string>
     <string name="action_settings" />
     <string name="title_activity_sign_in">SignInActivity</string>
 
