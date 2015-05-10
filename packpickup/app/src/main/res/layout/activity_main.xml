@@ -39,13 +39,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:text="@string/LoginBtn"
+
         android:onClick="signInHandler"/>
 
     <Button
         android:id="@+id/signup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
         android:text="@string/SignupBtn"
-        android:onClick="signUpHandler"/>
+        android:onClick="signUpHandler"
+        android:layout_below="@+id/login"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="127dp" />
  </RelativeLayout>

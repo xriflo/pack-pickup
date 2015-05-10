@@ -89,6 +89,12 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            try {
+                JSONObject object = new JSONObject(result);
+                result = object.getString("message");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
         }
     }

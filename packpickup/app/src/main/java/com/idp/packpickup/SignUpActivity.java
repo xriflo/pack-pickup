@@ -90,7 +90,12 @@ public class SignUpActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            String[] split = result.split(", :");
+            try {
+                JSONObject object = new JSONObject(result);
+                result = object.getString("message");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             Toast.makeText(SignUpActivity.this, result, Toast.LENGTH_LONG).show();
         }
     }
