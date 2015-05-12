@@ -30,6 +30,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.idp.packpickup.MainActivity" />
         </activity>
+        <activity
+            android:name=".ClientTypeActivity"
+            android:label="@string/title_activity_client_type"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.idp.packpickup.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SendPackActivity"
+            android:label="@string/title_send_pack"
+            android:parentActivityName=".ClientTypeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.idp.packpickup.ClientTypeActivity" />
+        </activity>
+        <activity
+            android:name=".PickUpPackActivity"
+            android:label="@string/title_pick_up_pack"
+            android:parentActivityName=".ClientTypeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.idp.packpickup.ClientTypeActivity" />
+        </activity>
     </application>
 
 </manifest>

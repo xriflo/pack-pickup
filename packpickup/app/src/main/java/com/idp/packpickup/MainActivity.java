@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,8 +32,6 @@ public class MainActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            // Do something like display a progress bar
         }
 
         // This is run in a background thread
@@ -96,16 +93,16 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
             }
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+            signIn();
         }
     }
 
-    public void signInHandler(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, SignInActivity.class);
-        Button buttonText = (Button) findViewById(R.id.login);
-        String message = buttonText.getText().toString();
+    public void signIn() {
+        Intent intent = new Intent(this, ClientTypeActivity.class);
+        startActivity(intent);
+    }
 
-        intent.putExtra(EXTRA_MESSAGE, message);
+    public void signInHandler(View view) {
         JSONObject login = new JSONObject();
         String username = ((EditText)findViewById(R.id.username)).getText().toString();
         String password = ((EditText)findViewById(R.id.password)).getText().toString();
@@ -124,12 +121,7 @@ public class MainActivity extends Activity {
     public void signUpHandler(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, SignUpActivity.class);
-        Button buttonText = (Button) findViewById(R.id.signup);
-        String message = buttonText.getText().toString();
-
-        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
-
     }
 
     @Override

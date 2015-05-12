@@ -1,24 +1,25 @@
 package com.idp.packpickup;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-
-public class NoNameActivity extends Activity {
+/**
+ * Created by Mardaloescu on 5/12/2015.
+ */
+public class PickUpPackActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pickup_pack);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_sign_up, menu);
         return true;
     }
 
@@ -35,9 +36,5 @@ public class NoNameActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void PickUpPack(View v) {
-
     }
 }

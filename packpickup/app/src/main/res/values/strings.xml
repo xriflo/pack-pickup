@@ -15,8 +15,10 @@
     <string name="CanPickUp">Can pick up</string>
     <string name="action_settings" />
     <string name="title_activity_sign_in">SignInActivity</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_client_type">Client type</string>
+    <string name="title_pick_up_pack">Pick up pack</string>
+    <string name="title_send_pack">Send pack</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
