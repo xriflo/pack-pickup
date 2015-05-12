@@ -1,5 +1,6 @@
 package com.idp.packpickup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,6 +27,11 @@ import java.net.URLEncoder;
 public class SignInActivity extends ActionBarActivity {
 
     private class MyConnection extends AsyncTask<JSONObject, String, String> {
+        private Context context;
+
+        public MyConnection(Context context) {
+            this.context = context;
+        }
 
         // Runs in UI before background thread is called
         @Override
@@ -92,7 +98,8 @@ public class SignInActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
             Toast.makeText(SignInActivity.this, result, Toast.LENGTH_LONG).show();
-
+            Intent intent = new Intent(context, ClientTypeActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -104,7 +111,7 @@ public class SignInActivity extends ActionBarActivity {
             login.put("username", username);
             login.put("password", password);
             login.put("logging", "signin");
-            new MyConnection().execute(login);
+            new MyConnection(v.getContext()).execute(login);
         } catch (JSONException e) {
             e.printStackTrace();
         }
