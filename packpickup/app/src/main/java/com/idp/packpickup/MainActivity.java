@@ -93,8 +93,7 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
             }
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
-            if(result.equals("Successfully logged in"))
-                signIn();
+            signIn();
         }
     }
 
@@ -117,11 +116,6 @@ public class MainActivity extends Activity {
         }
 
         //startActivity(intent);
-    }
-
-    public void cleanTextFields() {
-        ((EditText)findViewById(R.id.username)).getText().clear();
-        ((EditText)findViewById(R.id.password)).getText().clear();
     }
 
     public void signUpHandler(View view) {
