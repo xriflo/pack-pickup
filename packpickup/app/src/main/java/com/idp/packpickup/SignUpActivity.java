@@ -1,10 +1,7 @@
 package com.idp.packpickup;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -26,15 +23,7 @@ import java.net.URLEncoder;
 
 
 public class SignUpActivity extends ActionBarActivity {
-   private class SignUpConnection extends AsyncTask<JSONObject, String, String> {
-
-        public SignUpConnection(Context context) {
-            dialog = new ProgressDialog(context);
-            this.context = context;
-        }
-
-        private ProgressDialog dialog;
-        private Context context;
+    private class SignUpConnection extends AsyncTask<JSONObject, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -44,7 +33,7 @@ public class SignUpActivity extends ActionBarActivity {
         @Override
         protected String doInBackground(JSONObject... params) {
             StringBuffer responseString = new StringBuffer();
-            String data  = "";
+            String data = "";
 
             try {
                 data += URLEncoder.encode("username", "UTF-8")
@@ -62,7 +51,7 @@ public class SignUpActivity extends ActionBarActivity {
                 conn.setDoOutput(true);
                 OutputStreamWriter wr = new OutputStreamWriter
                         (conn.getOutputStream());
-                wr.write( data );
+                wr.write(data);
                 wr.flush();
 
                 BufferedReader reader = new BufferedReader(
@@ -82,8 +71,6 @@ public class SignUpActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Log.v("debuvkv", responseString.toString());
-            Looper.prepare();
             return responseString.toString();
         }
 
@@ -97,6 +84,25 @@ public class SignUpActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
             Toast.makeText(SignUpActivity.this, result, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void signUpHandler(View v) {
+        JSONObject signup = new JSONObject();
+        String username = ((EditText) findViewById(R.id.signupusername)).getText().toString();
+        String email = ((EditText) findViewById(R.id.signupemail)).getText().toString();
+        String password = ((EditText) findViewById(R.id.signuppassword)).getText().toString();
+        String location = ((EditText) findViewById(R.id.signuplocation)).getText().toString();
+        try {
+            signup.put("username", username);
+            signup.put("email", email);
+            signup.put("password", password);
+            signup.put("location", location);
+            signup.put("logging", "signup");
+            new SignUpConnection().execute(signup);
+        } catch (JSONException e) {
+            Log.v("Oops!", "SignUp Exception");
+            e.printStackTrace();
         }
     }
 
@@ -128,22 +134,4 @@ public class SignUpActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void signUpHandler(View v) {
-        JSONObject signup = new JSONObject();
-        String username = ((EditText) findViewById(R.id.signupusername)).getText().toString();
-        String email = ((EditText) findViewById(R.id.signupemail)).getText().toString();
-        String password = ((EditText) findViewById(R.id.signuppassword)).getText().toString();
-        String location = ((EditText) findViewById(R.id.signuplocation)).getText().toString();
-        try {
-            signup.put("username", username);
-            signup.put("email", email);
-            signup.put("password", password);
-            signup.put("location", location);
-            signup.put("logging", "signup");
-            new SignUpConnection(this).execute(signup);
-        } catch (JSONException e) {
-            Log.v("Oops!", "SignUp Exception");
-            e.printStackTrace();
-        }
-    }
 }
