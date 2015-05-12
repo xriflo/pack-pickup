@@ -97,6 +97,7 @@ public class SignUpActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
             Toast.makeText(SignUpActivity.this, result, Toast.LENGTH_LONG).show();
+            cleanTextFields();
         }
     }
 
@@ -145,5 +146,12 @@ public class SignUpActivity extends ActionBarActivity {
             Log.v("Oops!", "SignUp Exception");
             e.printStackTrace();
         }
+    }
+
+    public void cleanTextFields() {
+        ((EditText) findViewById(R.id.signupusername)).getText().clear();
+        ((EditText) findViewById(R.id.signupemail)).getText().clear();
+        ((EditText) findViewById(R.id.signuppassword)).getText().clear();
+        ((EditText) findViewById(R.id.signuplocation)).getText().clear();
     }
 }
