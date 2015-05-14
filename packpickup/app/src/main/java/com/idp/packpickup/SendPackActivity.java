@@ -9,10 +9,13 @@ import android.view.MenuItem;
  * Created by Mardaloescu on 5/12/2015.
  */
 public class SendPackActivity extends ActionBarActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_pack);
+
     }
 
     @Override

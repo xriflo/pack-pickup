@@ -20,5 +20,8 @@
     <string name="title_send_pack">Send pack</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="departure_city">Departure city</string>
+    <string name="arrival_city">Arrival city</string>
+
 
 </resources>
