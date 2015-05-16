@@ -1,64 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.idp.packpickup.SendPackActivity"
     android:background="@color/bg_login"
-    android:gravity="center_vertical|center_horizontal"
     android:id = "@+id/send_pack_id">
 
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datePicker"
-        android:calendarViewShown="false"
-        android:layout_alignParentLeft="true"
-        />
-
-    <TimePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/timePicker"
-        android:layout_below="@id/datePicker"
-        android:layout_alignParentRight="true"
-         />
-
     <TextView
-        android:id="@+id/departure_city_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/departureTitle"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/departure_city"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/datePicker"
-        />
+        android:text="@string/departure_city" />
 
     <EditText
-        android:id="@+id/departure_city"
-        android:layout_width="wrap_content"
+        android:id="@+id/departureEntry"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_below="@+id/departure_city_text"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentLeft="true" />
+        android:layout_below="@+id/departureTitle"
+        android:hint="craiova"
+        android:inputType="text"/>
 
     <TextView
-        android:id="@+id/arrival_city_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/arrivalTitle"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/arrival_city"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/timePicker"
-        />
+        android:layout_below="@+id/departureEntry"
+        android:text="@string/arrival_city" />
 
     <EditText
-        android:id="@+id/arrival_city"
+        android:id="@+id/arrivalEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrivalTitle"
+        android:hint="bucuresti"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/dateTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrivalEntry"
+        android:text="Date" />
+
+    <EditText
+        android:id="@+id/dateEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateTitle"
+        android:hint="12-02-2015"
+        android:inputType="date" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_below="@+id/arrival_city_text"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentRight="true" />
+        android:text="Search"
+        android:id="@+id/button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="searchForOffers"/>
+
+
 </RelativeLayout>

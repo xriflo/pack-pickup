@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,11 +65,61 @@
         android:inputType="text"
         android:layout_below="@+id/signuptxtlocation"/>
 
+    <TextView
+        android:id="@+id/imagelocation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_location"
+        android:layout_below="@+id/signuplocation" />
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:id="@+id/browse_images"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagelocation">
+        <Button
+            android:id="@+id/browse_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browse image"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentRight="true"
+            android:onClick="chooseImage"/>
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@+id/browse_image"
+            android:src="@mipmap/ic_launcher">
+        </ImageView>
+    </RelativeLayout>
+
+    <!--
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signuplocation"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentLeft="true"/>
+
+    <Button
+        android:id="@+id/choos_image"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signuplocation"
+        android:text="@string/choose_img"
+        android:onClick="chooseImage"
+        android:layout_toRightOf="@id/imgUser"/>
+
+    -->
     <Button
         android:id="@+id/register"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signuplocation"
+        android:layout_below="@+id/browse_images"
         android:text="@string/SignupBtn"
         android:onClick="signUpHandler"/>
+
 </RelativeLayout>

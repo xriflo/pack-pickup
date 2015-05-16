@@ -22,6 +22,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="departure_city">Departure city</string>
     <string name="arrival_city">Arrival city</string>
+    <string name="title_activity_all_offers">AllOffersActivity</string>
+    <string name="choose_img">Choose image</string>
+    <string name="image_location">Image Location</string>
 
 
 </resources>

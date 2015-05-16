@@ -28,7 +28,7 @@ public class SignInActivity extends ActionBarActivity {
 
     private class MyConnection extends AsyncTask<JSONObject, String, String> {
         private Context context;
-
+        private JSONObject jsonResponse;
         public MyConnection(Context context) {
             this.context = context;
         }
@@ -77,7 +77,6 @@ public class SignInActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Log.v("debuv", responseString.toString());
             return responseString.toString();
         }
 
@@ -91,15 +90,20 @@ public class SignInActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            JSONObject object;
             try {
-                JSONObject object = new JSONObject(result);
+                object = new JSONObject(result);
                 result = object.getString("message");
+                Toast.makeText(SignInActivity.this, result, Toast.LENGTH_LONG).show();
+                if(object.getString("success").equals("1")) {
+                    Intent intent = new Intent(context, ClientTypeActivity.class);
+                    Log.v("debuv","aicix");
+                    startActivity(intent);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(SignInActivity.this, result, Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(context, ClientTypeActivity.class);
-            startActivity(intent);
+
         }
     }
 
