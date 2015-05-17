@@ -4,14 +4,26 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
-public class AllOffersActivity extends ActionBarActivity {
+public class AllOffers extends ActionBarActivity {
+    private ListView packsListView;
+    private String[] stringArray ;
+    private ArrayAdapter packsItemArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_offers);
+        stringArray = new String[10];
+        for(int i=0; i < stringArray.length; i++){
+            stringArray[i] = "String " + i;
+        }
+        packsItemArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, stringArray);
+        packsListView = (ListView) findViewById(R.id.packsList);
+        packsListView.setAdapter(packsItemArrayAdapter);
     }
 
 

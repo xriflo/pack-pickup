@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         new Thread(new Runnable() {
             public void run() {
                 while (progressStatus < 100) {
-                    progressStatus += 1;
+                    progressStatus += 25;
                     handler.post(new Runnable() {
                         public void run() {
                             progressBar.setProgress(progressStatus);

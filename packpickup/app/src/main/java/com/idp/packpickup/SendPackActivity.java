@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.client.ClientProtocolException;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -80,9 +81,9 @@ public class SendPackActivity extends ActionBarActivity {
         }
         else {
             try {
-                search.put("departure", departure);
-                search.put("arrival", arrival);
-                search.put("date", date);
+                search.put("departure", departure.getText().toString());
+                search.put("arrival", arrival.getText().toString());
+                search.put("date", date.getText().toString());
 
                 new MyConnection(v.getContext()).execute(search);
             } catch (JSONException e) {
@@ -156,15 +157,18 @@ public class SendPackActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            JSONObject object;
+            JSONArray object;
             try {
-                object = new JSONObject(result);
-                result = object.getString("message");
-                Toast.makeText(SendPackActivity.this, result, Toast.LENGTH_LONG).show();
-                if(object.getString("success").equals("1")) {
-                    Intent intent = new Intent(context, ClientTypeActivity.class);
-                    Log.v("debuv", "aicix");
+                Log.v("debuvv", result);
+                object = new JSONArray(result);
+                Log.v("debuvv", object.toString());
+
+                if(!(object.length() == 0)) {
+                    Intent intent = new Intent(context, AllOffers.class);
                     startActivity(intent);
+                }
+                else {
+                    Toast.makeText(SendPackActivity.this, "There are no offers for you, you filthy animal!", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

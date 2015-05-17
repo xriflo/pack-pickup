@@ -2,12 +2,14 @@ package com.idp.packpickup;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,9 +33,12 @@ import java.net.URLEncoder;
 public class SignUpActivity extends ActionBarActivity {
 
     private static int RESULT_LOAD_IMAGE = 1;
+    private static Bitmap imageFromUser;
 
     private class SignUpConnection extends AsyncTask<JSONObject, String, String> {
-
+        ImageView imageView = (ImageView) findViewById(R.id.imgUser);
+        byte[] decodedByte;
+        Bitmap x;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -45,6 +50,14 @@ public class SignUpActivity extends ActionBarActivity {
             String data = "";
 
             try {
+                String imageEncoded = Functions.encodeImage(imageFromUser);
+
+
+                //------------------------
+                decodedByte = Base64.decode(imageEncoded, 0);
+                x =  BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+
+                //------------------------
                 data += URLEncoder.encode("username", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("username"), "UTF-8");
                 data += "&" + URLEncoder.encode("email", "UTF-8")
@@ -53,9 +66,11 @@ public class SignUpActivity extends ActionBarActivity {
                         + "=" + URLEncoder.encode(params[0].getString("password"), "UTF-8");
                 data += "&" + URLEncoder.encode("location", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("location"), "UTF-8");
+                data += "&" + URLEncoder.encode("image", "UTF-8")
+                        + "=" + URLEncoder.encode(imageEncoded, "UTF-8");
                 data += "&" + URLEncoder.encode("logging", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("logging"), "UTF-8");
-                java.net.URL url = new java.net.URL(URL.createRowScript);
+                java.net.URL url = new java.net.URL(URL.sign_in_up);
                 URLConnection conn = url.openConnection();
                 conn.setDoOutput(true);
                 OutputStreamWriter wr = new OutputStreamWriter
@@ -80,6 +95,7 @@ public class SignUpActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Log.v("debuv",responseString.toString());
             return responseString.toString();
         }
 
@@ -89,6 +105,7 @@ public class SignUpActivity extends ActionBarActivity {
             try {
                 JSONObject object = new JSONObject(result);
                 result = object.getString("message");
+                imageView.setImageBitmap(x);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -102,6 +119,7 @@ public class SignUpActivity extends ActionBarActivity {
         String email = ((EditText) findViewById(R.id.signupemail)).getText().toString();
         String password = ((EditText) findViewById(R.id.signuppassword)).getText().toString();
         String location = ((EditText) findViewById(R.id.signuplocation)).getText().toString();
+
         try {
             signup.put("username", username);
             signup.put("email", email);
@@ -120,7 +138,6 @@ public class SignUpActivity extends ActionBarActivity {
         Intent i = new Intent(
                 Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
@@ -140,7 +157,13 @@ public class SignUpActivity extends ActionBarActivity {
             cursor.close();
 
             ImageView imageView = (ImageView) findViewById(R.id.imgUser);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            Bitmap rescaled = Functions.resolveOrientation(picturePath);
+            int scale_factor = Math.max(rescaled.getWidth(),rescaled.getHeight())/100;
+            Bitmap resized = Bitmap.createScaledBitmap(rescaled, rescaled.getWidth()/scale_factor,
+                    rescaled.getHeight()/scale_factor,true);
+            imageView.setImageBitmap(resized);
+            imageFromUser = resized;
+
 
         }
 

@@ -52,7 +52,7 @@ public class SignInActivity extends ActionBarActivity {
                         + "=" + URLEncoder.encode(params[0].getString("password"), "UTF-8");
                 data += "&" + URLEncoder.encode("logging", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("logging"), "UTF-8");
-                java.net.URL url = new java.net.URL(URL.createRowScript);
+                java.net.URL url = new java.net.URL(URL.sign_in_up);
                 URLConnection conn = url.openConnection();
                 conn.setDoOutput(true);
                 OutputStreamWriter wr = new OutputStreamWriter
