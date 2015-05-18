@@ -1,3 +1,7 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -140,8 +144,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/arrival_hourEntry"
         android:text="Send offer!"
-        android:onClick="signUpHandler"/>
+        android:onClick="sendOfferHandler"/>
 
 
 
 </RelativeLayout>
+    </ScrollView>

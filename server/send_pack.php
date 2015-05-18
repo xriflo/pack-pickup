@@ -44,6 +44,7 @@ if(!empty($_POST['departure']) && !empty($_POST['arrival']) && !empty($_POST['da
 		$entry['arrival_date'] = $arrival_datetime->format('d-m-Y');
 		$entry['arrival_time'] = $arrival_datetime->format('H:i:s');
 		$entry['departure_location'] = $row["departure_location"];
+		$entry['arrival_location'] = $row["arrival_location"]
 		if((new DateTime($date))->format('d-m-Y')==$departure_datetime->format('d-m-Y'))
 			$response[] = $entry;
 	}

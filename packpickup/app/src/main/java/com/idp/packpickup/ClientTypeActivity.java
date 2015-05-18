@@ -9,11 +9,12 @@ import android.view.View;
 
 
 public class ClientTypeActivity extends ActionBarActivity {
-
+    private String username_signed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_type);
+        username_signed = getIntent().getStringExtra("username_signed");
     }
 
     @Override
@@ -40,6 +41,7 @@ public class ClientTypeActivity extends ActionBarActivity {
 
     public void PickUpPack(View v) {
         Intent intent = new Intent(this, PickUpPackActivity.class);
+        intent.putExtra("username_signed", username_signed);
         startActivity(intent);
     }
 

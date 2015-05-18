@@ -25,10 +25,11 @@ import java.net.URLEncoder;
 
 
 public class SignInActivity extends ActionBarActivity {
-
+    private String username_signed;
     private class MyConnection extends AsyncTask<JSONObject, String, String> {
         private Context context;
         private JSONObject jsonResponse;
+
         public MyConnection(Context context) {
             this.context = context;
         }
@@ -97,7 +98,7 @@ public class SignInActivity extends ActionBarActivity {
                 Toast.makeText(SignInActivity.this, result, Toast.LENGTH_LONG).show();
                 if(object.getString("success").equals("1")) {
                     Intent intent = new Intent(context, ClientTypeActivity.class);
-                    Log.v("debuv","aicix");
+                    intent.putExtra("username_signed", username_signed);
                     startActivity(intent);
                 }
             } catch (JSONException e) {
@@ -115,6 +116,7 @@ public class SignInActivity extends ActionBarActivity {
             login.put("username", username);
             login.put("password", password);
             login.put("logging", "signin");
+            username_signed = username;
             new MyConnection(v.getContext()).execute(login);
         } catch (JSONException e) {
             e.printStackTrace();
