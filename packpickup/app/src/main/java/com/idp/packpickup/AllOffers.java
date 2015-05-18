@@ -65,7 +65,7 @@ public class AllOffers extends ActionBarActivity {
                 offer.setDeparture("Plecare: "+j.getString("departure_city")+", "+j.getString("departure_date") +", "+
                         j.getString("departure_time")+", "+j.get("departure_location"));
                 offer.setArrival("Sosire: " + j.getString("arrival_city") + ", " + j.getString("arrival_date") + ", " +
-                        j.getString("arrival_time"));
+                        j.getString("arrival_time")+", "+j.get("arrival_location"));
                 offers.add(offer);
 
             }

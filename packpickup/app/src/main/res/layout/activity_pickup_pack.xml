@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,16 +7,141 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.idp.packpickup.ClientTypeActivity"
+    tools:context="com.idp.packpickup.SendPackActivity"
     android:background="@color/bg_login"
-    android:gravity="center_vertical|center_horizontal">
+    android:id = "@+id/send_pack_id">
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/departure_cityTitle"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Hello again, Flori!"
-        android:id="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:text="@string/departure_city" />
+
+    <EditText
+        android:id="@+id/departure_cityEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_cityTitle"
+        android:hint="timisoara"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/departure_locationTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_cityEntry"
+        android:text="Departure location" />
+
+    <EditText
+        android:id="@+id/departure_locationEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_locationTitle"
+        android:hint="str Mieilor, nr 45"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/departure_timeTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_locationEntry"
+        android:text="Departure date"/>
+
+    <EditText
+        android:id="@+id/departure_timeEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_timeTitle"
+        android:hint="12-02-2015"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/departure_hourTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_timeEntry"
+        android:text="Departure hour"/>
+
+    <EditText
+        android:id="@+id/departure_hourEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_hourTitle"
+        android:hint="15:00:00"
+        android:inputType="time" />
+
+  <!-- ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  -->
+
+    <TextView
+        android:id="@+id/arrival_cityTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/departure_hourEntry"
+        android:text="Arrival city" />
+
+    <EditText
+        android:id="@+id/arrival_cityEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_cityTitle"
+        android:hint="craiova"
+        android:inputType="text"/>
+    <TextView
+        android:id="@+id/arrival_locationTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_cityEntry"
+        android:text="Arrival location" />
+
+    <EditText
+        android:id="@+id/arrival_locationEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_locationTitle"
+        android:hint="str Iezilor, nr 39"
+        android:inputType="text"/>
+
+
+    <TextView
+        android:id="@+id/arrival_timeTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_locationEntry"
+        android:text="Arrival date"/>
+
+    <EditText
+        android:id="@+id/arrival_timeEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_timeTitle"
+        android:hint="12-02-2015"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/arrival_hourTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_timeEntry"
+        android:text="Arrival hour"/>
+
+    <EditText
+        android:id="@+id/arrival_hourEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_hourTitle"
+        android:hint="19:00:00"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrival_hourEntry"
+        android:text="Send offer!"
+        android:onClick="signUpHandler"/>
+
+
+
 </RelativeLayout>

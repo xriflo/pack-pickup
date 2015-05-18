@@ -2,14 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_login"
     tools:context=".MainActivity" >
 
     <ListView
         android:id="@+id/packsList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/lemon"
-        android:dividerHeight="1dp"
+        android:divider="@color/blue_navy"
+        android:dividerHeight="2dp"
         android:listSelector="@color/bg_login" />
 
 </RelativeLayout>
