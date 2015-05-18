@@ -6,8 +6,10 @@
 
     <ListView
         android:id="@+id/packsList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/lemon"
+        android:dividerHeight="1dp"
+        android:listSelector="@color/bg_login" />
 
 </RelativeLayout>

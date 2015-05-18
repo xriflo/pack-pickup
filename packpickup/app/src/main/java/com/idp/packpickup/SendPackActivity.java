@@ -165,6 +165,7 @@ public class SendPackActivity extends ActionBarActivity {
 
                 if(!(object.length() == 0)) {
                     Intent intent = new Intent(context, AllOffers.class);
+                    intent.putExtra("result", result);
                     startActivity(intent);
                 }
                 else {
