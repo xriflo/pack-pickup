@@ -93,6 +93,7 @@ public class SignInActivity extends ActionBarActivity {
             super.onPostExecute(result);
             JSONObject object;
             try {
+                Log.v("debuvx",result);
                 object = new JSONObject(result);
                 result = object.getString("message");
                 Toast.makeText(SignInActivity.this, result, Toast.LENGTH_LONG).show();
