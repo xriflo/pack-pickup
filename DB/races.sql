@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2015 at 10:05 PM
--- Server version: 5.6.24
+-- Generation Time: 21 Mai 2015 la 01:29
+-- Versiune server: 5.6.24
 -- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `races`
+-- Structura de tabel pentru tabelul `races`
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
@@ -38,16 +38,12 @@ CREATE TABLE IF NOT EXISTS `races` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `races`
+-- Salvarea datelor din tabel `races`
 --
 
 INSERT INTO `races` (`rid`, `uid`, `departure_city`, `arrival_city`, `departure_time`, `arrival_time`, `departure_location`, `arrival_location`) VALUES
-(1, 1, 'pitesti', 'bucuresti', '2015-05-13 08:00:00', '2015-05-10 10:00:00', 'str Nordului, nr 29', 'gara de vest'),
-(2, 2, 'timisoara', 'bucuresti', '2015-05-13 10:00:00', '2015-05-13 20:00:00', 'gara de nord', 'gara de sus'),
-(3, 2, 'timisoara', 'bucuresti', '2015-05-14 00:00:00', '2015-05-12 10:00:00', 'str timisului de vest, McDonald', 'gara de nord'),
-(4, 1, 'x', 'x', '2015-05-13 00:00:00', '2015-05-13 08:00:00', 'marte', 'venus'),
-(5, 12, 'timisoara', 'bucuresti', '2015-05-13 00:00:00', '2015-05-13 10:30:00', 'gara de pe marte', 'gara de pe luna'),
-(6, 12, 'timisoara', 'bucuresti', '2015-05-13 00:00:00', '2015-05-13 13:00:00', 'str luminii, nr 23', 'str intunericului, nr 25');
+(8, 5, 'Severin', 'Bucuresti', '2015-04-13 13:00:00', '2015-04-13 16:00:00', 'str. Lalelelor, nr 45', 'str. Ratustelor, nr 32'),
+(9, 12, 'Craiova', 'Bucuresti', '2025-05-21 17:33:00', '2015-05-21 20:18:00', 'str. Lacramioarelor, nr 14', 'str. Plopilor-fara-sot, nr 34');
 
 --
 -- Indexes for dumped tables
@@ -69,11 +65,11 @@ ALTER TABLE `races`
 ALTER TABLE `races`
   MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- Constraints for dumped tables
+-- Restrictii pentru tabele sterse
 --
 
 --
--- Constraints for table `races`
+-- Restrictii pentru tabele `races`
 --
 ALTER TABLE `races`
 ADD CONSTRAINT `races_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
