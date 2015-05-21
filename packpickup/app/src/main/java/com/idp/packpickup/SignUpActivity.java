@@ -48,15 +48,15 @@ public class SignUpActivity extends ActionBarActivity {
         protected String doInBackground(JSONObject... params) {
             StringBuffer responseString = new StringBuffer();
             String data = "";
+            String imageEncoded = "";
 
             try {
-                String imageEncoded = Functions.encodeImage(imageFromUser);
+                imageEncoded = Functions.encodeImage(imageFromUser);
 
 
                 //------------------------
                 decodedByte = Base64.decode(imageEncoded, 0);
                 x =  BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-
                 //------------------------
                 data += URLEncoder.encode("username", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("username"), "UTF-8");
@@ -66,10 +66,13 @@ public class SignUpActivity extends ActionBarActivity {
                         + "=" + URLEncoder.encode(params[0].getString("password"), "UTF-8");
                 data += "&" + URLEncoder.encode("location", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("location"), "UTF-8");
+                data += "&" + URLEncoder.encode("phone", "UTF-8")
+                        + "=" + URLEncoder.encode(params[0].getString("phone"), "UTF-8");
                 data += "&" + URLEncoder.encode("image", "UTF-8")
                         + "=" + URLEncoder.encode(imageEncoded, "UTF-8");
                 data += "&" + URLEncoder.encode("logging", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("logging"), "UTF-8");
+
                 java.net.URL url = new java.net.URL(URL.sign_in_up);
                 URLConnection conn = url.openConnection();
                 conn.setDoOutput(true);
@@ -89,11 +92,14 @@ public class SignUpActivity extends ActionBarActivity {
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return imageEncoded;
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return imageEncoded;
             } catch (JSONException e) {
                 e.printStackTrace();
+                return imageEncoded;
             }
             Log.v("debuv",responseString.toString());
             return responseString.toString();
@@ -119,12 +125,14 @@ public class SignUpActivity extends ActionBarActivity {
         String email = ((EditText) findViewById(R.id.signupemail)).getText().toString();
         String password = ((EditText) findViewById(R.id.signuppassword)).getText().toString();
         String location = ((EditText) findViewById(R.id.signuplocation)).getText().toString();
+        String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
 
         try {
             signup.put("username", username);
             signup.put("email", email);
             signup.put("password", password);
             signup.put("location", location);
+            signup.put("phone", phone);
             signup.put("logging", "signup");
             new SignUpConnection().execute(signup);
         } catch (JSONException e) {
@@ -163,14 +171,8 @@ public class SignUpActivity extends ActionBarActivity {
                     rescaled.getHeight()/scale_factor,true);
             imageView.setImageBitmap(resized);
             imageFromUser = resized;
-
-
         }
-
-
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

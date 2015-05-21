@@ -23,7 +23,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/departureTitle"
-        android:hint="craiova"
+        android:hint="Craiova"
         android:inputType="text"/>
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/arrivalTitle"
-        android:hint="bucuresti"
+        android:hint="Bucuresti"
         android:inputType="text"/>
 
     <TextView

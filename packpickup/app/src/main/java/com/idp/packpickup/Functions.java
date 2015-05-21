@@ -2,13 +2,9 @@ package com.idp.packpickup;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
 import android.graphics.Matrix;
-import android.os.AsyncTask;
-
-
+import android.media.ExifInterface;
 import android.util.Base64;
-import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -16,7 +12,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by happyfeet on 5/4/2015.
@@ -26,13 +21,21 @@ public class Functions {
     public static boolean finished_converting = false;
 
     public static String encodeImage(Bitmap bitmap) {
-        String encoded = "auch";
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] byte_arr = stream.toByteArray();
-        // Encode Image to String
-        encoded = Base64.encodeToString(byte_arr,Base64.DEFAULT);
-        return encoded;
+
+        try {
+            String encoded = "auch";
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] byte_arr = stream.toByteArray();
+            // Encode Image to String
+            encoded = Base64.encodeToString(byte_arr,Base64.DEFAULT);
+            return encoded;
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "You must choose a picture";
     }
     /*
     public static class convertBitmapToString extends AsyncTask<Bitmap, Integer, String> {

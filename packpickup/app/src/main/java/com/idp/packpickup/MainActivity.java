@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         new Thread(new Runnable() {
             public void run() {
                 while (progressStatus < 100) {
-                    progressStatus += 25;
+                    progressStatus += 10;
                     handler.post(new Runnable() {
                         public void run() {
                             progressBar.setProgress(progressStatus);
@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
                         }
                     });
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(75);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

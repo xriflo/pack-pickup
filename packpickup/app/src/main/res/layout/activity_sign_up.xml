@@ -71,11 +71,25 @@
             android:layout_below="@+id/signuptxtlocation"/>
 
         <TextView
+            android:id="@+id/phonetxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/PhoneNumber"
+            android:layout_below="@+id/signuplocation" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_below="@+id/phonetxt"/>
+
+        <TextView
             android:id="@+id/imagelocation"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/image_location"
-            android:layout_below="@+id/signuplocation"
+            android:layout_below="@+id/phone"
             android:paddingBottom="5px"/>
 
         <RelativeLayout android:layout_width="match_parent"

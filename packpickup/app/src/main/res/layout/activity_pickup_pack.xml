@@ -27,7 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/departure_cityTitle"
-        android:hint="timisoara"
+        android:hint="Timisoara"
         android:inputType="text"/>
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/departure_locationTitle"
-        android:hint="str Mieilor, nr 45"
+        android:hint="str. Mieilor, nr 45"
         android:inputType="text"/>
 
     <TextView
@@ -90,7 +90,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/arrival_cityTitle"
-        android:hint="craiova"
+        android:hint="Craiova"
         android:inputType="text"/>
     <TextView
         android:id="@+id/arrival_locationTitle"
@@ -104,7 +104,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/arrival_locationTitle"
-        android:hint="str Iezilor, nr 39"
+        android:hint="str. Iezilor, nr 39"
         android:inputType="text"/>
 
 

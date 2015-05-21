@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 public class Offer {
     private Bitmap image;
     private String name_user, phone, arrival, departure;
+
     public void setDeparture(String departure) {
         this.departure = departure;
     }

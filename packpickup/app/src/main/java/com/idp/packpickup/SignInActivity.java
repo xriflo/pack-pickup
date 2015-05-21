@@ -25,7 +25,10 @@ import java.net.URLEncoder;
 
 
 public class SignInActivity extends ActionBarActivity {
-    private String username_signed;
+    private static String username_signed = "";
+
+    public static String getUsername_signed() {return username_signed;}
+
     private class MyConnection extends AsyncTask<JSONObject, String, String> {
         private Context context;
         private JSONObject jsonResponse;
