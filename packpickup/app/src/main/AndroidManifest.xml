@@ -29,18 +29,18 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".SignInActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.idp.packpickup.MainActivity" />
+                android:value="com.idp.packpickup.SignInActivity" />
         </activity>
         <activity
             android:name=".ClientTypeActivity"
             android:label="@string/title_activity_client_type"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".SignInActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.idp.packpickup.MainActivity" />
+                android:value="com.idp.packpickup.SignInActivity" />
         </activity>
         <activity
             android:name=".SendPackActivity"
