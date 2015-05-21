@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,12 +51,8 @@ public class SignUpActivity extends ActionBarActivity {
 
             try {
                 imageEncoded = Functions.encodeImage(imageFromUser);
-
-
-                //------------------------
                 decodedByte = Base64.decode(imageEncoded, 0);
                 x =  BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-                //------------------------
                 data += URLEncoder.encode("username", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("username"), "UTF-8");
                 data += "&" + URLEncoder.encode("email", "UTF-8")
@@ -70,7 +65,7 @@ public class SignUpActivity extends ActionBarActivity {
                         + "=" + URLEncoder.encode(params[0].getString("phone"), "UTF-8");
                 data += "&" + URLEncoder.encode("image", "UTF-8")
                         + "=" + URLEncoder.encode(imageEncoded, "UTF-8");
-                data += "&" + URLEncoder.encode("logging", "UTF-8")
+                data += "&" + URLEncoder.encode("sging", "UTF-8")
                         + "=" + URLEncoder.encode(params[0].getString("logging"), "UTF-8");
 
                 java.net.URL url = new java.net.URL(URL.sign_in_up);
@@ -101,7 +96,6 @@ public class SignUpActivity extends ActionBarActivity {
                 e.printStackTrace();
                 return imageEncoded;
             }
-            Log.v("debuv",responseString.toString());
             return responseString.toString();
         }
 
@@ -136,7 +130,6 @@ public class SignUpActivity extends ActionBarActivity {
             signup.put("logging", "signup");
             new SignUpConnection().execute(signup);
         } catch (JSONException e) {
-            Log.v("Oops!", "SignUp Exception");
             e.printStackTrace();
         }
     }

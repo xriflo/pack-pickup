@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -159,9 +158,7 @@ public class SendPackActivity extends ActionBarActivity {
             super.onPostExecute(result);
             JSONArray object;
             try {
-                Log.v("debuvv", result);
                 object = new JSONArray(result);
-                Log.v("debuvv", object.toString());
 
                 if(!(object.length() == 0)) {
                     Intent intent = new Intent(context, AllOffers.class);

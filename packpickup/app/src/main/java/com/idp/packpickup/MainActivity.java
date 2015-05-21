@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
-//    private ProgressDialog progress;
     private ProgressBar progressBar;
     private TextView textView;
     private Handler handler = new Handler();
@@ -22,7 +20,6 @@ public class MainActivity extends Activity {
 
     public void signInHandler(View view) {
         Intent intent = new Intent(this, ClientTypeActivity.class);
-        Log.v("debuv", "aici aj");
         startActivity(intent);
     }
 
@@ -31,7 +28,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        progress = new ProgressDialog(this);
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         textView = (TextView) findViewById(R.id.textView1);
         final Intent intent = new Intent(this, SignInActivity.class);

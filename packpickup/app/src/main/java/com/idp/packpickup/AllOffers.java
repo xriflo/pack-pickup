@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -241,7 +240,6 @@ public class AllOffers extends ActionBarActivity {
         @Override
         public void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.v("DBDebug: ", result);
             Toast.makeText(AllOffers.this, "Selected :" + " " + result, Toast.LENGTH_SHORT).show();
         }
     }

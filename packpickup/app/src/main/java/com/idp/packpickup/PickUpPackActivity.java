@@ -1,11 +1,9 @@
 package com.idp.packpickup;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.client.ClientProtocolException;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -120,7 +117,6 @@ public class PickUpPackActivity extends ActionBarActivity {
 
                 new MyConnection(v.getContext()).execute(sendOffer);
             } catch (JSONException e) {
-                Log.v("Oops!", "SignUp Exception");
                 e.printStackTrace();
             }
         }
@@ -204,7 +200,6 @@ public class PickUpPackActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.v("debuvv", result);
             JSONObject object;
             try {
 
