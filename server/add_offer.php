@@ -7,10 +7,9 @@ $db = new DB_CONNECT();
 $db->connect();
 $con = $db->myconn;
 
-// array for JSON response
-$response = array();
-
-if(!empty($_POST['departure_city']) && !empty($_POST['departure_location']) && !empty($_POST['departure_time']) && !empty($_POST['departure_time']) && !empty($_POST['departure_hour'])  && !empty($_POST['arrival_city']) && !empty($_POST['arrival_location']) && !empty($_POST['arrival_time']) && !empty($_POST['arrival_hour']) && !empty($_POST['username'])) {
+if(!empty($_POST['departure_city']) && !empty($_POST['departure_location']) && !empty($_POST['departure_time']) && 
+	!empty($_POST['departure_time']) && !empty($_POST['departure_hour'])  && !empty($_POST['arrival_city']) && 
+	!empty($_POST['arrival_location']) && !empty($_POST['arrival_time']) && !empty($_POST['arrival_hour']) && !empty($_POST['username'])) {
 
 	$departure_city = $_POST['departure_city'];
 	$departure_location = $_POST['departure_location'];
@@ -38,7 +37,8 @@ if(!empty($_POST['departure_city']) && !empty($_POST['departure_location']) && !
 	$row_user = mysqli_fetch_assoc($user_result);
 	$uid = $row_user['uid'];
 
-	$result = mysqli_query($con, "INSERT INTO races (uid, departure_city, arrival_city, departure_time, arrival_time, departure_location, arrival_location) VALUES ('$uid', '$departure_city', '$arrival_city', '$departure_datetime', '$arrival_datetime', '$departure_location', '$arrival_location')");
+	$result = mysqli_query($con, "INSERT INTO races (uid, departure_city, arrival_city, departure_time, arrival_time, departure_location, arrival_location) 
+								VALUES ('$uid', '$departure_city', '$arrival_city', '$departure_datetime', '$arrival_datetime', '$departure_location', '$arrival_location')");
 	 if ($result) {
         // successfully inserted into database
         $response["success"] = 1;

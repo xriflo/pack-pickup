@@ -12,11 +12,12 @@ if(!empty($_POST['logging'])) {
 	$db = $db2->myconn;
 	
 	if(strcmp($_POST['logging'], "signup") == 0) {
-		if (!empty($_POST['username']) && !empty(urldecode($_POST['email'])) && !empty($_POST['password']) && !empty($_POST['location'])) {
+		if (!empty($_POST['username']) && !empty(urldecode($_POST['email'])) && !empty($_POST['password']) && !empty($_POST['location']) && !empty($_POST['phone'])) {
 		    $username = $_POST['username'];
 		    $email = $_POST['email'];
 		    $password = $_POST['password'];
 		    $location = $_POST['location'];
+		    $phone_number = $_POST['phone'];
 		    
 		    
 		    $result = mysqli_query($db, "SELECT COUNT(*) as no FROM users WHERE ((username = '$username' OR email = '$username') AND password = '$password')");
@@ -39,11 +40,11 @@ if(!empty($_POST['logging'])) {
 
 			    // mysql inserting a new row
 			    if($image=='YES')
-			    	$result = mysqli_query($db, "INSERT INTO users (username, email, password, location, photo_name) 
-			                            VALUES ('$username', '$email', '$password', '$location', '$image_name')");
+			    	$result = mysqli_query($db, "INSERT INTO users (username, email, password, location, phone, photo_name) 
+			                            VALUES ('$username', '$email', '$password', '$location', '$phone_number', '$image_name')");
 			    else
-			    	$result = mysqli_query($db, "INSERT INTO users (username, email, password, location) 
-			                            VALUES ('$username', '$email', '$password', '$location')");
+			    	$result = mysqli_query($db, "INSERT INTO users (username, email, password, location, phone) 
+			                            VALUES ('$username', '$email', '$password', '$location, '$phone_number')");
 			 
 			 	// check if row inserted or not
 			    if ($result) {
